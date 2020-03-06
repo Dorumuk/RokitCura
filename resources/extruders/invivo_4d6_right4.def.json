@@ -1,0 +1,16 @@
+{
+    "version": 2,
+    "name": "Syringe 4",
+    "inherits": "invivo_4d6_right_base",
+    "metadata": {
+        "machine": "invivo_4d6",
+        "position": "4"
+    },
+
+    "overrides": {
+        "extruder_nr": {
+            "default_value": 4,
+            "maximum_value": "5"
+        }
+    }
+}

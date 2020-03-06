@@ -14,12 +14,16 @@
         "preferred_quality_type": "normal",
         "preferred_variant_name": "0.2mm Nozzle",
         "has_variants": true,
-        "variants_name": "Needle Core",
+        "variants_name": "Nozzle Gauge",
         "machine_extruder_trains":
         {
-            "0": "invivo_4d6_fff_extruder",
-            "1": "invivo_4d6_hotmelt",
-            "2": "invivo_4d6_syringe"
+            "0": "invivo_4d6_left",
+            "1": "invivo_4d6_right1",
+            "2": "invivo_4d6_right2",
+            "3": "invivo_4d6_right3",
+            "4": "invivo_4d6_right4",
+            "5": "invivo_4d6_right5"
+
         }
     },
 
@@ -43,65 +47,9 @@
         "switch_extruder_retraction_speeds": {"default_value": 15 },
         "switch_extruder_retraction_amount": {"value": 1 },
 
-        "speed_travel": { "value": "100" },
-        "speed_layer_0": { "value": "20" },
-        "speed_prime_tower": { "value": "speed_topbottom" },
-        "speed_print": { "value": "40" },
-        "speed_support": { "value": "speed_wall_0" },
-        "speed_support_interface": { "value": "speed_topbottom" },
-        "speed_topbottom": { "value": "math.ceil(speed_print * 20 / 35)" },
-        "speed_wall": { "value": "math.ceil(speed_print * 30 / 40)" },
-        "speed_wall_0": { "value": "math.ceil(speed_wall * 20 / 25)" },
-        "speed_wall_x": { "value": "speed_wall" },
-
-        "prime_tower_position_x": { "value": "175" },
-        "prime_tower_position_y": { "value": "178" },
-        "prime_tower_wipe_enabled": { "default_value": false },
-        "prime_tower_min_volume": { "default_value": 50 },
-
-        "prime_blob_enable": { "enabled": true },
-
-        "acceleration_enabled": { "value": "True" },
-        "acceleration_layer_0": { "value": "acceleration_topbottom" },
-        "acceleration_prime_tower": { "value": "math.ceil(acceleration_print * 2000 / 4000)" },
-        "acceleration_print": { "value": "3000" },
-        "acceleration_support": { "value": "math.ceil(acceleration_print * 2000 / 4000)" },
-        "acceleration_support_interface": { "value": "acceleration_topbottom" },
-        "acceleration_topbottom": { "value": "math.ceil(acceleration_print * 1000 / 3000)" },
-        "acceleration_travel": { "value": "acceleration_print" },
-        "acceleration_wall": { "value": "math.ceil(acceleration_print * 1000 / 3000)" },
-        "acceleration_wall_0": { "value": "math.ceil(acceleration_wall * 1000 / 1000)" },
-
         "cool_fan_full_at_height": { "value": "layer_height_0 + 2 * layer_height" },
         "cool_min_layer_time": { "default_value": 10 },
 
-        "jerk_enabled": { "value": "True" },
-        "jerk_layer_0": { "value": "jerk_topbottom" },
-        "jerk_prime_tower": { "value": "math.ceil(jerk_print * 15 / 25)" },
-        "jerk_print": { "value": "25" },
-        "jerk_support": { "value": "math.ceil(jerk_print * 15 / 25)" },
-        "jerk_support_interface": { "value": "jerk_topbottom" },
-        "jerk_topbottom": { "value": "math.ceil(jerk_print * 5 / 25)" },
-        "jerk_wall": { "value": "math.ceil(jerk_print * 10 / 25)" },
-        "jerk_wall_0": { "value": "math.ceil(jerk_wall * 5 / 10)" },
-
-        "wall_thickness": { "value": "1.2" },
-
-        "retraction_amount": { "default_value": 3 },
-        "retraction_speed": { "default_value": 15 },
-        "travel_retract_before_outer_wall": { "default_value": true },
-        "skin_overlap": { "value": "15" },
-        "adhesion_type": { "default_value": "skirt" },
-        "machine_nozzle_heat_up_speed": { "default_value": 2 },
-        "machine_nozzle_cool_down_speed": { "default_value": 2 },
-        "machine_head_with_fans_polygon": { "default_value": [[-75, -18],[-75, 35],[18, 35],[18, -18]] },
-        "gantry_height": { "value": "55" },
-        "machine_max_feedrate_x": { "default_value": 300 },
-        "machine_max_feedrate_y": { "default_value": 300 },
-        "machine_max_feedrate_z": { "default_value": 40 },
-        "machine_max_acceleration_z": { "default_value": 500 },
-        "machine_acceleration": { "default_value": 1000 },
-        "machine_max_jerk_xy": { "default_value": 10 },
         "machine_gcode_flavor": { "default_value": "RepRap (Marlin/Sprinter)" },
         "machine_start_gcode": {
             "default_value": ";(**** start of start-gcode for Edison Bio NK 1.57.70.0 BI-P2-01-999999-9990 ****)\nG21; set units to mm,\nG90; set positioning to absolute\n;M104 S0 T0 (set extruder temperature)\nG92 Z0\nG1 Z20 F120\nG28 X Y F1000 (home XY axes maximum)\nG28 Z F120 (home Z axis minimum)\nM1010 S1\nG95 P2\n;G1 Z20 F1500\n;G1 X119 Y20 F800\n;M109 S0 T0 ;wait for extruder to reach temperature\n;M106 P4 S255 ;uv led1\n;M106 P3 S255 ;uv led2\nM1015 P0 F60.0 E-0.5\nG92 E0 (Set E to 0 again)\nT0 ;Switch to the first extruder\n;(**** end of start-gcode ****)"
@@ -109,6 +57,6 @@
         "machine_end_gcode": {
             "default_value": ";(**** start of end-gcode for Edison Bio NK 1.57.70.0 BI-P2-01-999999-9990 ****)\nM73 P100\n;end progress\nM104 T0 S0\n;extruder heater off\nM106 P4 S0 ;uv led1\nM106 P3 S0;uv led2\nM1010 S0 ; TM ;(**** end of end-gcode ****)"
         },
-        "machine_extruder_count": { "default_value": 3 }
+        "machine_extruder_count": { "default_value": 6 }
     }
 }

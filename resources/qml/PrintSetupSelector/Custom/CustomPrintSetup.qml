@@ -226,10 +226,11 @@ Item
             {
                 contentItem: Item
                 {
-                    Cura.ExtruderIcon
+                    Cura.RokitExtruderIcon
                     {
                         anchors.horizontalCenter: parent.horizontalCenter
                         materialColor: model.color
+                        extruderName: model.name
                         extruderEnabled: model.enabled
                     }
                 }
