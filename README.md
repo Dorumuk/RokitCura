@@ -2,6 +2,39 @@ Cura
 ====
 This is the new, shiny frontend for Cura. Check [daid/LegacyCura](https://github.com/daid/LegacyCura) for the legacy Cura that everyone knows and loves/hates. We re-worked the whole GUI code at Ultimaker, because the old code started to become unmaintainable.
 
+
+Debuggin in VS code
+-----------
+
+launch.json
+
+```json
+{
+    // IntelliSense를 사용하여 가능한 특성에 대해 알아보세요.
+    // 자세한 내용을 보려면 https://go.microsoft.com/fwlink/?linkid=830387을(를) 방문하세요.
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: cura_app.py",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/cura_app.py",
+            "console": "integratedTerminal",
+            "args" : [],
+            "pythonPath": "${config:python.pythonPath}"
+        },
+        {
+            "name": "Python: Current File (External Terminal)",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "externalTerminal",
+            "pythonPath": "${config:python.pythonPath}"
+        }
+    ]
+}
+```
+
 Logging Issues
 ------------
 For crashes and similar issues, please attach the following information:
