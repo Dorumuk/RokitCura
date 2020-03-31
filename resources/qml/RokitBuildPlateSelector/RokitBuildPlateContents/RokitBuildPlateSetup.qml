@@ -20,7 +20,7 @@ import "../../Widgets"
 
 Item
 {
-    id: preparingSetup
+    id: rokitBuildPlateSetup
 
     // 창 임시 면적 값
     height: UM.Theme.getSize("rokit_buildvolume_setting_widget").height + 2 * padding
@@ -67,7 +67,23 @@ Item
             rightMargin: parent.padding
         }
         //height: UM.Theme.getSize("print_setup_big_item").height
-        height: childrenRect.height   
+        height: childrenRect.height  
+
+        // Label
+        // {
+        //     id: generationTitleLabel
+        //     anchors
+        //     {
+        //         top: parent.top
+        //         left: parent.left
+        //         right: parent.right
+        //     }
+        //     text: catalog.i18nc("@label", "Generation")
+        //     font: UM.Theme.getFont("large")
+        //     renderType: Text.NativeRendering
+        //     color: UM.Theme.getColor("text")
+        //     verticalAlignment: Text.AlignVCenter
+        // } 
 
         Label   // Title Label
         {
@@ -77,12 +93,13 @@ Item
                 left: parent.left
             } 
 
-            text: catalog.i18nc("@title:label", "Build Volume Settings")
-            font: UM.Theme.getFont("medium_bold")
+            text: catalog.i18nc("@title:label", "Build Plate Settings")
+            font: UM.Theme.getFont("large")
             color: UM.Theme.getColor("text")
             renderType: Text.NativeRendering
             width: parent.width
             elide: Text.ElideRight
+            verticalAlignment: Text.AlignVCenter
         }
 
         UM.TabRow

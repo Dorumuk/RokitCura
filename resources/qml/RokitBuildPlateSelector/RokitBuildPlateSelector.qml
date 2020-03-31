@@ -7,7 +7,7 @@ import QtQuick.Controls 2.3
 import UM 1.2 as UM
 import Cura 1.0 as Cura
 
-import "RokitBuildVolumeContents"
+import "RokitBuildPlateContents"
 
 Cura.ExpandablePopup
 {
@@ -32,9 +32,9 @@ Cura.ExpandablePopup
         iconSize: source != "" ? UM.Theme.getSize("machine_selector_icon").width: 0
     }
 
-    contentItem: RokitBuildVolumeSetup
+    contentItem: RokitBuildPlateSetup
     {
-        id: rokitBuildVolumeSetup
+        id: rokitBuildPlateSetup
         anchors
         {
             left: parent.left
@@ -52,16 +52,8 @@ Cura.ExpandablePopup
     //     {
     //         left: parent.left
     //         right: parent.right
-    //         top: rokitBuildVolumeSetup.bottom
+    //         top: rokitBuildPlateSetup.bottom
     //         topMargin: UM.Theme.getSize("wide_margin").width
     //     }
     // }
-
-// <<<<<<< HEAD:resources/qml/RokitBuildVolumeSelector/RokitBuildVolumeSelector.qml
-//     =======
-//     contentItem: RokitBuildPlateSetting
-//     {
-//         id: rokitBuildPlateSetting
-// >>>>>>> a6436bd61c80abb34610fba17c988c661ab5390d:resources/qml/RokitBuildPlateSelector/RokitBuildPlateSelector.qml
-
 }
