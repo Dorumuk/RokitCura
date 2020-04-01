@@ -180,6 +180,79 @@ Item
                     labelWidth: base.labelWidth
                     forceUpdateOnChangeFunction: forceUpdateFunction
                 }
+
+                // Cura.SimpleCheckBox  // "Origin at center" -> "Adhesion"
+                // {
+                //     id: generationSupportcheck
+                //     containerStackId: machineStackId
+                //     settingKey: "machine_center_is_zero"
+                //     settingStoreIndex: propertyStoreIndex
+                //     labelText: catalog.i18nc("@label", "Adhesion")
+                //     labelFont: base.labelFont
+                //     labelWidth: base.labelWidth
+                //     forceUpdateOnChangeFunction: forceUpdateFunction
+                // }
+
+                // Cura.NumericTextFieldWithUnit  // "Z (Height)" -> "infill"
+                // {
+                //     id: generationInfillcheck
+                //     containerStackId: machineStackId
+                //     settingKey: "machine_height"
+                //     settingStoreIndex: propertyStoreIndex
+                //     //labelText: catalog.i18nc("@label", "Z (Height)")
+                //     labelText: catalog.i18nc("@label", "Infill")
+                //     labelFont: base.labelFont
+                //     labelWidth: base.labelWidth
+                //     controlWidth: base.controlWidth
+                //     //unitText: catalog.i18nc("@label", "mm")
+                //     forceUpdateOnChangeFunction: forceUpdateFunction
+                // }
+
+                // Cura.NumericTextFieldWithUnit  // "Z (Height)" -> "infill"
+                // {
+                //     id: generationInfillcheck
+                //     containerStackId: machineStackId
+                //     settingKey: "machine_height"
+                //     settingStoreIndex: propertyStoreIndex
+                //     //labelText: catalog.i18nc("@label", "Z (Height)")
+                //     labelText: catalog.i18nc("@label", "Infill")
+                //     labelFont: base.labelFont
+                //     labelWidth: base.labelWidth
+                //     controlWidth: base.controlWidth
+                //     //unitText: catalog.i18nc("@label", "mm")
+                //     forceUpdateOnChangeFunction: forceUpdateFunction
+                // }
+                
+                // Cura.NumericTextFieldWithUnit  // "Z (Height)" -> "infill"
+                // {
+                //     id: generationInfillcheck
+                //     containerStackId: machineStackId
+                //     settingKey: "machine_height"
+                //     settingStoreIndex: propertyStoreIndex
+                //     //labelText: catalog.i18nc("@label", "Z (Height)")
+                //     labelText: catalog.i18nc("@label", "Infill")
+                //     labelFont: base.labelFont
+                //     labelWidth: base.labelWidth
+                //     controlWidth: base.controlWidth
+                //     //unitText: catalog.i18nc("@label", "mm")
+                //     forceUpdateOnChangeFunction: forceUpdateFunction
+                // }
+
+                // Cura.NumericTextFieldWithUnit  // "Z (Height)" -> "infill"
+                // {
+                //     id: generationInfillcheck
+                //     containerStackId: machineStackId
+                //     settingKey: "machine_height"
+                //     settingStoreIndex: propertyStoreIndex
+                //     //labelText: catalog.i18nc("@label", "Z (Height)")
+                //     labelText: catalog.i18nc("@label", "Infill")
+                //     labelFont: base.labelFont
+                //     labelWidth: base.labelWidth
+                //     controlWidth: base.controlWidth
+                //     //unitText: catalog.i18nc("@label", "mm")
+                //     forceUpdateOnChangeFunction: forceUpdateFunction
+                // }
+                
             }
         }
     }
