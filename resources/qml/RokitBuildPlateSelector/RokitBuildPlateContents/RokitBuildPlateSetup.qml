@@ -23,8 +23,8 @@ Item
     id: rokitBuildPlateSetup
 
     // 창 임시 면적 값
-    height: UM.Theme.getSize("rokit_buildvolume_setting_widget").height + 2 * padding
-    width: UM.Theme.getSize("rokit_buildvolume_setting_widget").width - 2 * UM.Theme.getSize("wide_margin").width
+    height: UM.Theme.getSize("rokit_build_plate_setting_widget").height + 2 * padding
+    width: UM.Theme.getSize("rokit_build_plate_setting_widget").width - 2 * UM.Theme.getSize("wide_margin").width
     
     property Action configureSettings
 
@@ -69,35 +69,20 @@ Item
         //height: UM.Theme.getSize("print_setup_big_item").height
         height: childrenRect.height  
 
-        // Label
-        // {
-        //     id: generationTitleLabel
-        //     anchors
-        //     {
-        //         top: parent.top
-        //         left: parent.left
-        //         right: parent.right
-        //     }
-        //     text: catalog.i18nc("@label", "Generation")
-        //     font: UM.Theme.getFont("large")
-        //     renderType: Text.NativeRendering
-        //     color: UM.Theme.getColor("text")
-        //     verticalAlignment: Text.AlignVCenter
-        // } 
-
         Label   // Title Label
         {
-            id: buildVolumeTitle
+            id: buildPlateTitle
             anchors{
                 top: parent.top
+                topMargin: UM.Theme.getSize("default_margin").height
                 left: parent.left
             } 
-
-            text: catalog.i18nc("@title:label", "Build Plate Settings")
-            font: UM.Theme.getFont("large")
-            color: UM.Theme.getColor("text")
+            height: contentHeight
+            text: catalog.i18nc("@header", "Build Plate Settings")
+            //text: catalog.i18nc("@title:label", "Build Plate Settings")
+            font: UM.Theme.getFont("medium")
+            color: UM.Theme.getColor("small_button_text")
             renderType: Text.NativeRendering
-            width: parent.width
             elide: Text.ElideRight
             verticalAlignment: Text.AlignVCenter
         }
@@ -110,8 +95,8 @@ Item
 
             anchors
             {
-                top: buildVolumeTitle.bottom
-                topMargin: UM.Theme.getSize("wide_margin").width
+                top: buildPlateTitle.bottom
+                topMargin: UM.Theme.getSize("default_margin").width
                 left: parent.left
                 right: parent.right
             }
@@ -166,24 +151,7 @@ Item
                     onClicked:
                     {
                         choosing = index;
-                        
-                        // var newValue = value 
-                        // if (machineShape.properties.value != newValue)
-                        // {
-                        //     if (setValueFunction !== null)
-                        //     {
-                        //         setValueFunction(newValue)
-                        //     }
-                        //     else
-                        //     {
-                        //         machineShape.setPropertyValue("value", newValue)//newValue)
-                        //         originAtCenter.setPropertyValue("value", toCenter)     
-                        //     }
-                        //     forceUpdateOnChangeFunction()
-                        //     afterOnEditingFinishedFunction()
-                        // }
-                    }       
-                    // default is center
+                    }   
                 }
             }            
             // // binding
@@ -235,12 +203,6 @@ Item
             //width: Math.round(parent.width / 3.2)
             // TODO Create a reusable component with these properties to not define them separately for each component
             labelColumnWidth: parent.firstColumnWidth
-
-            // Rectangle{
-            //     anchors.fill:parent
-            //     border.width: 2
-            //     border.color: "green"
-            // }
         }
         
         WellPlateSelector // well Plate
@@ -252,13 +214,6 @@ Item
             //width: Math.round(parent.width / 3.2)
             // TODO Create a reusable component with these properties to not define them separately for each component
             labelColumnWidth: parent.firstColumnWidth
-
-            // //Identifying Line
-            // Rectangle{
-            //     anchors.fill:parent
-            //     border.width: 2
-            //     border.color: "green"
-            // }
         }   
 
         CultureSlideSelector // culture Slide

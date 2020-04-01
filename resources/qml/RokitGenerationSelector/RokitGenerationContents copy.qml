@@ -3,9 +3,6 @@
 
 import QtQuick 2.7
 import QtQuick.Controls 2.3
-// 아래 2개 추가
-import QtQuick.Layouts 1.3
-import QtQuick.Controls 1.4 as Controls1
 
 import UM 1.3 as UM
 import Cura 1.0 as Cura
@@ -22,23 +19,12 @@ Item
 {
     id: content
 
-    UM.I18nCatalog
-    {
-        id: catalog
-        name: "cura"
-    }
-
-    property real progress: UM.Backend.progress
-    property int backendState: UM.Backend.state
-    // As the collection of settings to send to the engine might take some time, we have an extra value to indicate
-    // That the user pressed the button but it's still waiting for the backend to acknowledge that it got it.
-    property bool waitingForSliceToStart: false
-    onBackendStateChanged: waitingForSliceToStart = false
-
     property int absoluteMinimumHeight: 200 * screenScaleFactor
 
+    property var listHeight: 300  // --
+
     width: UM.Theme.getSize("print_setup_widget").width - 2 * UM.Theme.getSize("default_margin").width
-    height: contents.height + prepareButtons.height
+    height: contents.height + buttonRow.height
 
     enum Mode
     {
@@ -107,7 +93,7 @@ Item
                             Math.max
                             (
                                 absoluteMinimumHeight,
-                                base.height - (rokitGenerationSetup.mapToItem(null, 0, 0).y + prepareButtons.height + UM.Theme.getSize("default_margin").height)
+                                base.height - (rokitGenerationSetup.mapToItem(null, 0, 0).y + buttonRow.height + UM.Theme.getSize("default_margin").height)
                             )
                         );
 
@@ -129,23 +115,9 @@ Item
         color: UM.Theme.getColor("lining")
     }
 
-    function sliceOrStopSlicing()
-    {
-        if (widget.backendState == UM.Backend.NotStarted)
-        {
-            widget.waitingForSliceToStart = true
-            CuraApplication.backend.forceSlice()
-        }
-        else
-        {
-            widget.waitingForSliceToStart = false
-            CuraApplication.backend.stopSlicing()
-        }
-    }
-
     Item
     {
-        id: prepareButtons
+        id: buttonRow
         property real padding: UM.Theme.getSize("default_margin").width
         height: generationButton.height + 2 * padding + (draggableArea.visible ? draggableArea.height : 0)
 
@@ -160,41 +132,15 @@ Item
         Cura.SecondaryButton
         {
             id: generationButton
-            anchors{
-                top: parent.top
-                right: parent.right //--
-                margins: parent.padding
-            }
+            anchors.top: parent.top
+            anchors.right: parent.right //--
+            anchors.margins: parent.padding
             leftPadding: UM.Theme.getSize("default_margin").width
             rightPadding: UM.Theme.getSize("default_margin").width
-
-            enabled: widget.backendState != UM.Backend.Error && !widget.waitingForSliceToStart
             text: catalog.i18nc("@button", "Generation")
-            //visible: widget.backendState == UM.Backend.NotStarted || widget.backendState == UM.Backend.Error
+            //iconSource: UM.Theme.getIcon("arrow_left")
             visible: true
-            onClicked: sliceOrStopSlicing() // SLICE 버튼 
-        }
-
-        Connections
-        {
-            target: UM.Preferences
-            onPreferenceChanged:
-            {
-                if (preference !== "general/auto_slice")
-                {
-                    return;
-                }
-
-                var autoSlice = UM.Preferences.getValue("general/auto_slice")
-                if(prepareButtons.autoSlice != autoSlice)
-                {
-                    prepareButtons.autoSlice = autoSlice
-                    if(autoSlice)
-                    {
-                        CuraApplication.backend.forceSlice()
-                    }
-                }
-            }
+            onClicked: currentModeIndex = RokitGenerationContents.Mode.Recommended
         }
 
         //Invisible area at the bottom with which you can resize the panel.
@@ -221,7 +167,7 @@ Item
                 {
                     // position of mouse relative to dropdown  align vertical centre of mouse area to cursor
                     //      v------------------------------v   v------------v
-                    var h = mouseY + prepareButtons.y + content.y - height / 2 | 0;
+                    var h = mouseY + buttonRow.y + content.y - height / 2 | 0;
                     if(h < absoluteMinimumHeight) //Enforce a minimum size.
                     {
                         h = absoluteMinimumHeight;

@@ -43,10 +43,11 @@ Item
                 left: parent.left
                 right: parent.right
             }
-            text: catalog.i18nc("@label", "Generation")
-            font: UM.Theme.getFont("large")
+            text: catalog.i18nc("@header", "Generation")
+            //text: catalog.i18nc("@title:label", "Generation")
+            font: UM.Theme.getFont("medium")
             renderType: Text.NativeRendering
-            color: UM.Theme.getColor("text")
+            color: UM.Theme.getColor("small_button_text")
             verticalAlignment: Text.AlignVCenter
         }
 
@@ -206,7 +207,7 @@ Item
 
         color: UM.Theme.getColor("main_background")
 
-        RokitGenerationList
+        RokitGenerationCheckList
         {
             anchors // right Margin: narrow  , left Margin: default
             {
@@ -218,12 +219,6 @@ Item
                 // Compensate for the negative margin in the parent
                 bottomMargin: UM.Theme.getSize("default_lining").width
             }
-
-            // Rectangle{
-            //     anchors.fill: parent
-            //     border.width: 2
-            //     border.color: "green"
-            // }
         }
 
         // Cura.RokitGenerationSettingView

@@ -15,7 +15,6 @@ Cura.ExpandablePopup
 
     contentPadding: UM.Theme.getSize("default_lining").width
     contentAlignment: Cura.ExpandablePopup.ContentAlignment.AlignLeft
-    // width: UM.Theme.getSize("rokit_buildvolume_setup_widget").width - 2 * UM.Theme.getSize("default_margin").width
 
     UM.I18nCatalog
     {

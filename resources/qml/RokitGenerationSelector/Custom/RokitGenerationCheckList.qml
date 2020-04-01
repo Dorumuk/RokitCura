@@ -173,7 +173,8 @@ Item
                 {
                     id: generationSupportcheck
                     containerStackId: machineStackId
-                    settingKey: "machine_center_is_zero"
+                    settingKey: "support_enable"
+                    
                     settingStoreIndex: propertyStoreIndex
                     labelText: catalog.i18nc("@label", "Support")
                     labelFont: base.labelFont
@@ -183,9 +184,9 @@ Item
 
                 // Cura.SimpleCheckBox  // "Origin at center" -> "Adhesion"
                 // {
-                //     id: generationSupportcheck
+                //     id: generationAdhesioncheck
                 //     containerStackId: machineStackId
-                //     settingKey: "machine_center_is_zero"
+                //     settingKey: "adhesion_type"
                 //     settingStoreIndex: propertyStoreIndex
                 //     labelText: catalog.i18nc("@label", "Adhesion")
                 //     labelFont: base.labelFont
