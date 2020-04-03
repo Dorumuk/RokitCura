@@ -115,7 +115,7 @@ Item
                 rightMargin: UM.Theme.getSize("default_margin").width
                 //verticalCenter: parent.verticalCenter
             }
-            text: catalog.i18nc("@label", "Culture Dish : 100090")
+            text: catalog.i18nc("@label", supportExtruderNr.properties.value + ": Culture Dish : 100090")
             font: UM.Theme.getFont("medium")
             renderType: Text.NativeRendering
             color: UM.Theme.getColor("text")
@@ -234,5 +234,14 @@ Item
         //         bottomMargin: UM.Theme.getSize("default_lining").width
         //     }
         // }
+    }
+
+    UM.SettingPropertyProvider
+    {
+        id: supportExtruderNr
+        containerStack: Cura.MachineManager.activeMachine
+        key: "support_extruder_nr"
+        watchedProperties: [ "value" ]
+        storeIndex: 0
     }
 }

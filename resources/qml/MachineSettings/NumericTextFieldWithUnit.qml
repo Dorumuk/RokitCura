@@ -20,8 +20,10 @@ UM.TooltipArea
     height: childrenRect.height
     width: childrenRect.width
 
-    property int controlWidth: UM.Theme.getSize("setting_control").width
-    property int controlHeight: UM.Theme.getSize("setting_control").height
+    property int controlWidth: UM.Theme.getSize("rokit_combobox_thin").width
+    property int controlHeight: UM.Theme.getSize("rokit_combobox_thin").height
+    // property int controlWidth: UM.Theme.getSize("setting_control").width
+    // property int controlHeight: UM.Theme.getSize("setting_control").height
 
     text: tooltipText
 
@@ -156,6 +158,23 @@ UM.TooltipArea
             const value = propertyProvider.properties.value
             return value ? value : ""
         }
+
+        // Text
+        // {
+        //     text:{
+
+        //         const value = propertyProvider.properties.value
+        //         return value ? value : ""
+        //     }
+
+        //     anchors{
+        //         right: parent.right
+        //         rightMargin: UM.Theme.getSize("narrow_margin").width
+        //         verticalCenter: parent.verticalCenter
+        //     }
+        // }
+
+        
         validator: DoubleValidator
         {
             bottom: allowNegativeValue ? Number.NEGATIVE_INFINITY : 0
